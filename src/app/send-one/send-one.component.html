@@ -1,0 +1,29 @@
+
+<div class="card  bg-dark">
+    <span class="title text-white" style="margin-bottom: 2%;">Send Email</span>
+   
+    <form class="form"> 
+      <div class="group" id="seul_dest">
+       
+        <input class="bg-dark text-white" [(ngModel)]="newChip" (change)="verif_email(newChip)" placeholder="" type="email" id="email" name="email" required="">
+        <label class="bg-dark text-white"  id="one"  for="email">{{label}}</label>
+      </div>
+      <div class="group">
+        <input class="bg-dark text-white"  name="subject" placeholder="" type="text" required="" [(ngModel)]="subject">
+        <label for="name">Subject</label>
+      </div>
+      <div class="group">
+          <textarea class="bg-dark text-white" name="text" placeholder="" id="comment" name="comment" rows="5" required="" [(ngModel)]="text"></textarea>
+          <label for="comment">Text</label>
+      </div>
+      <button class="bg-white text-dark" type="submit" (click)="send_mail()">Submit</button>
+      <button class="btn btn-outline-dark" type="submit" (click)="annuler()">Annuler</button>
+    </form>
+  </div>
+  
+  <dialog class="dialog-box bg-white" id="dialog" open *ngIf="show_event==true">
+      <h2 class="text-dark">{{title}}</h2>
+    <p class="text-dark">{{message}}</p>
+      <button onclick="window.dialog.close();"  aria-label="close" class="x">❌</button>
+  </dialog>
+  

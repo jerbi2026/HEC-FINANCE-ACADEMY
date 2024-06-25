@@ -1,0 +1,12 @@
+<dialog class="dialog-box bg-dark" id="dialog" open *ngIf="show_event==true">
+    <img class=" rounded table-user" src="{{image}}">
+      <h2 class="text-light">{{title}}</h2>
+      <p class="text-light">start day : {{start_day}} </p>
+      <p class="text-light">end day: {{end_day}} </p>
+    <p class="text-light">description: {{description}} </p>
+  
+      <button onclick="window.dialog.close();" (click)="close_dialog()" aria-label="close" class="x">❌</button>
+</dialog>
+
+
+<div id="calendar" class="calendar-container"></div>

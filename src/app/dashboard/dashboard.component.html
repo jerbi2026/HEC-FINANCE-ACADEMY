@@ -1,0 +1,162 @@
+<app-navbar></app-navbar>
+<dialog class="dialog-box bg-dark" id="dialog" open *ngIf="show_member==true">
+  <img class="table-user" src="{{photo}}">
+	<h2 class="text-light">{{name}}</h2>
+	<a style="text-decoration-line: none;" href="tel:{{numero}}" target="_blank"><p class="text-light">Numero : {{numero}} </p></a>
+	<a style="text-decoration-line: none;" href="mailto:{{email}}" target="_blank"><p class="text-light">email: {{email}} </p></a>
+	<button onclick="window.dialog.close();" (click)="close_dialog()" aria-label="close" class="x">❌</button>
+</dialog>
+<div  id="stats" style="margin-left: 12%; overflow-x: hidden;">
+  <app-dash-search></app-dash-search>
+    <app-home-overview></app-home-overview>
+    <div class="image-container">
+     
+      <div class="container">
+               
+        <div class="d-flex flex-column flex-column-reverse flex-md-row">
+            <div class="col col-md-5 me-md-5">
+                <h1 class="fs-1 mb-3 fw-bold text-dark">Nos Statistiques</h1>
+                <p class="fs-5">
+                    Ces statiques concernent notre site web, ainsi la fiche d'établissement de notre club. Si vous voulez avoir plus d'idées, contactez l'un des IT pour vous donner les coordonnées de site.
+                    PS: Le departement IT va faire l'entretien de cette page, et à chaque 15 jours on fait une mise à jour au statistiques.
+                </p>
+
+            </div>
+
+            
+        </div>
+      </div>
+  </div>
+  <div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+    
+    <div class="row">
+      <div class="col">
+        <img src="assets/image/report.jpg" alt="" style="width: 100%; height: 100%;">
+
+      </div>
+      
+    </div>
+    <div class="row" style="margin-top: 2%;">
+      
+      <div class="col">
+        <div class="col-md-auto">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-dark">Bureau executive</h4>
+              <p class="card-description">
+              </p>
+              <div class="table-responsive">
+                <table class="table  table-dark">
+                  <thead>
+                    <tr>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        
+                      </th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let membre of bureau" >
+                      <td >
+                        <img class="table-user" src="{{membre.photo}}" alt=""> 
+                        {{membre.name}}
+                      </td>
+                      
+                      <td>
+                          <button type="button" class="btn btn-outline-light" (click)="open_dialog(membre.name,membre.photo,membre.numero,membre.email)" >View More</button>
+                      </td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+    <div class="col-md-auto" style="margin-bottom: 2%;">
+      <h1 class="card-title text-dark">Our Shared Agenda</h1>
+      <app-dash-calendrier></app-dash-calendrier>
+      <a type="button" class="btn btn-dark" routerLink="/calendrier" style="width: 100%; color: #ffff; margin-top: 2%; margin-bottom: 3%;">View More</a>
+
+    </div>
+    
+  </div>
+    
+    
+   
+    <div class="col-lg-12 grid-margin stretch-card" id="table_message">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-dark">Received Messages from Contact Us</h4>
+            <p class="card-description">
+            </p>
+            <div class="table-responsive">
+              <table class="table table-dark ">
+                <thead>
+
+                  <tr>
+                    <th>
+                      Name
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      Message
+                    </th>
+                    <th>
+                      Date
+                    </th>
+                    <th>
+                      
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of messages  | paginate:{itemsPerPage:tab , currentPage:p};  let i = index" >
+                    <td >
+                      {{item[0]}}
+                    </td>
+                    <td>
+                     {{item[1]}}
+                    </td>
+                    
+                    <td>
+                        {{item[2]}}
+                    </td>
+                    <td>
+                        {{item[3]}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-light btn-fw" (click)="delete_contact(i)">Delete</button>
+                    </td>
+                  </tr>
+                  
+                </tbody>
+                
+              </table>
+              <pagination-controls (pageChange)="p=$event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+    
+    
+    
+   
+       
+    
+</div>
+<div id="loader_div" style="display: none;margin-left: 12%;">
+  <app-loader></app-loader>
+</div>
+
+
+
+

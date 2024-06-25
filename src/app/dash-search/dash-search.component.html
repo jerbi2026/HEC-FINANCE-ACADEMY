@@ -1,0 +1,97 @@
+<!--<body class="bg-dark">
+    <form action="" class="search-bar">
+      <input type="search" name="search" class="bg-dark text-white"  [(ngModel)]="searched_person" (ngModelChange)="search()" required >
+      <button class="search-btn" type="submit">
+        <span>Search</span>
+      </button>
+  
+    </form>
+  
+    
+  </body>
+  
+  <ul id="searched_person" class="todo-list" style="display: none;">
+    <li class="li" *ngFor="let item of persons">
+    <img src="{{item.photo}}" class="table-user" alt="">
+    <span class="todo-text">{{item.name}}</span>
+    
+    
+  </li>
+  </ul>
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nav bar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Arbutus Slab' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/4d548a4e76.js" crossorigin="anonymous"></script>
+ 
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm p-3 fixed-top">
+      <div class="container-fluid">
+       
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+            </ul>
+
+            <a>
+              <span class="material-symbols-outlined">
+              notifications
+              </span>
+            </a>
+            
+            
+
+             
+            
+            <form class="d-flex ms-auto nav-item search-form">
+              <div class="search-wrapper">
+                <input name="search" class="form-control me-2 p-1 ps-2" type="text" placeholder="Search" [(ngModel)]="searched_person" (ngModelChange)="search()">
+                
+              </div>
+             
+              
+            </form>
+            
+          
+          </div>
+        </div>
+        
+      
+  </nav>
+ 
+  <div id="searched_person" class="table-responsive" >
+    <table class="table  table-dark" style="width:60% ; margin-left: 20%; margin-top: 2%;">
+      <tbody  >
+      <tr *ngFor="let item of persons">
+        
+        <td >
+          <img class="table-user" src="{{item.photo}}" alt=""> 
+          {{item.name}}
+        </td>
+        
+        <td>
+          <button type="button" style="margin-left: 20%;" class="btn btn-outline-light" (click)="open_dialog(item.name,item.photo,item.numero,item.email)" >View More</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+   
+  
+</body>
+
+
+<dialog class="dialog-box bg-dark" id="dialog" open *ngIf="show_member==true">
+  <img class="table-user" src="{{photo}}">
+	<h2 class="text-light">{{name}}</h2>
+	<a style="text-decoration-line: none;" href="tel:{{numero}}" target="_blank"><p class="text-light">Numero : {{numero}} </p></a>
+	<a style="text-decoration-line: none;" href="mailto:{{email}}" target="_blank"><p class="text-light">email: {{email}} </p></a>
+	<button onclick="window.dialog.close();" (click)="close_dialog()" aria-label="close" class="x">❌</button>
+</dialog>

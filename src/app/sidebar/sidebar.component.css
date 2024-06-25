@@ -1,0 +1,9 @@
+.table-user {
+    --size: 35px;
+    width: var(--size);
+    height: var(--size);
+    object-fit: cover;
+    border-radius: 20%;
+    margin-right: 5px;
+  }
+  

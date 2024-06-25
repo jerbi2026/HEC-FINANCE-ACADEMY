@@ -1,0 +1,23 @@
+
+<app-navbar></app-navbar>
+
+<section style="margin-left: 11%; margin-bottom: 5%;">
+    <app-send-nav></app-send-nav>
+    <select name="options" class="form-select bg-dark text-white" aria-label="Default select example" style="margin-top: 3%; text-align: center; width: 60%; margin-left: 20%;" [(ngModel)]="option" >
+        <option value="seul">Une destination</option>
+        <option value="plus">Plusieurs destinations </option>
+        <option value="excel">Importer une fichier excel </option>
+    </select>
+    <div *ngIf="option=='seul'">
+        <app-send-one></app-send-one>         
+    </div>
+    <div *ngIf="option=='plus'">
+        <app-send-plus></app-send-plus>
+    </div>
+    <div *ngIf="option=='excel'">
+            <app-send-excel></app-send-excel>
+    </div>
+    
+   
+
+</section>
